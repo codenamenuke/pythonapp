@@ -14,11 +14,6 @@ node {
 		app.push()
 		app.push("latest")
 	}
-	}
-	
-	stage('Removing existing containers') {
-		sh ("docker rm -f ${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
-	}
 
 	stage('Deploy') {
 		sh ("docker run -d -p 3333:3333 ${dockerhubaccountid}/${application}:${BUILD_NUMBER}")
